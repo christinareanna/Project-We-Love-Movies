@@ -1,5 +1,6 @@
 const db = require("../db/connection");
 
+// Select all movies that is_showing = true
 async function list(isShowing) {
   if (isShowing) {
     return await listShowing();
@@ -7,6 +8,7 @@ async function list(isShowing) {
   return db("movies").select("*");
 };
 
+// Group movie title and movie id for all movies showing in theaters
 function listShowing() {
   return db("movies as m")
     .join("movies_theaters as mt", "m.movie_id", "mt.movie_id")

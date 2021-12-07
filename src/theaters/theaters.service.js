@@ -1,6 +1,9 @@
 const db = require("../db/connection");
 const reduceProperties = require("../utils/reduce-properties");
 
+
+// Nests all reduce properties into movies key
+
 const reducedMovies = reduceProperties("theater_id", {
   movie_id: ["movies", null, "movie_id"],
   title: ["movies", null, "title"],
@@ -10,6 +13,7 @@ const reducedMovies = reduceProperties("theater_id", {
   image_url: ["movies", null, "image_url"],
   is_showing: ["movies", null, "is_showing"],
 });
+
 
 function list() {
   return db("theaters as t")

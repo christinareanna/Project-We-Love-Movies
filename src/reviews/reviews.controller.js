@@ -23,9 +23,9 @@ async function list(req, res) {
   res.json({ data });
 };
 
+// update data of original review for every specific review (review_id)
 async function update(req, res) {
   const updatedReview = {
-    // ...res.locals.review,
     ...req.body.data,
     review_id: res.locals.review.review_id,
   };

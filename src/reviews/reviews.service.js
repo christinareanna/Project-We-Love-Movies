@@ -1,6 +1,7 @@
 const db = require("../db/connection");
 const mapProperties = require("../utils/map-properties");
 
+// Critic information to add data to reviews
 const addCritic = mapProperties({
   preferred_name: "critic.preferred_name",
   surname: "critic.surname",
@@ -15,6 +16,7 @@ function destroy(review_id) {
   return db("reviews").where({ review_id }).del();
 };
 
+// Add critic data to each review of every movie
 function list(movieId) {
   return db("reviews as r")
     .join("critics as c", "c.critic_id", "r.critic_id")
